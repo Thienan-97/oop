@@ -1,5 +1,7 @@
 package qlhocsinh;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class HocSinh extends Person{
@@ -136,24 +138,24 @@ public class HocSinh extends Person{
 			id = sc.nextLine();
 			System.out.print("Nhập họ tên: ");
 			name = sc.nextLine();
-			System.out.print("Nhập ngày sinh: ");
-			ngaySinh = sc.nextLine();
-			System.out.print("Lớp: ");
-			lop = Integer.parseInt(sc.nextLine());
-			System.out.print("Nhập giáo viên chủ nhiệm: ");
-			giaoVienCN = sc.nextLine();
-			System.out.print("Học phí một buổi: ");
-			hocPhiMotBuoi = Float.parseFloat(sc.nextLine());
-			System.out.print("Số ngày học: ");
-			soNgayHoc = Float.parseFloat(sc.nextLine());
-			System.out.print("Điểm toán: ");
-			diemToan = Float.parseFloat(sc.nextLine());
-			System.out.print("Điểm anh: ");
-			diemAnh = Float.parseFloat(sc.nextLine());
-			System.out.print("Điểm văn: ");
-			diemVan = Float.parseFloat(sc.nextLine());
-			System.out.print("Hạnh kiểm: ");
-			hanhKiem = Integer.parseInt(sc.nextLine());
+//			System.out.print("Nhập ngày sinh: ");
+//			ngaySinh = sc.nextLine();
+//			System.out.print("Lớp: ");
+//			lop = Integer.parseInt(sc.nextLine());
+//			System.out.print("Nhập giáo viên chủ nhiệm: ");
+//			giaoVienCN = sc.nextLine();
+//			System.out.print("Học phí một buổi: ");
+//			hocPhiMotBuoi = Float.parseFloat(sc.nextLine());
+//			System.out.print("Số ngày học: ");
+//			soNgayHoc = Float.parseFloat(sc.nextLine());
+//			System.out.print("Điểm toán: ");
+//			diemToan = Float.parseFloat(sc.nextLine());
+//			System.out.print("Điểm anh: ");
+//			diemAnh = Float.parseFloat(sc.nextLine());
+//			System.out.print("Điểm văn: ");
+//			diemVan = Float.parseFloat(sc.nextLine());
+//			System.out.print("Hạnh kiểm: ");
+//			hanhKiem = Integer.parseInt(sc.nextLine());
 	        p[i] = new HocSinh(id, name, ngaySinh, lop, giaoVienCN, soNgayHoc, diemToan,
 	    			diemVan, diemAnh, hanhKiem);
 	        ++i;
@@ -185,11 +187,29 @@ public class HocSinh extends Person{
 		}
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		HocSinh hs = new HocSinh();
 		
 		hs.addData();
 		hs.showData();
+		hs.export();
 	}
 	
+	@Override
+		public String toString() {
+			return "Name: "+ this.name;
+	}
+	
+	public void export() throws IOException {
+		try {
+		      FileWriter student = new FileWriter("E:/student.txt");
+		      student.write(toString());
+		      student.close();
+		      System.out.println("Successfully wrote to the file.");
+		    } catch (IOException e) {
+		      System.out.println("An error occurred.");
+		      e.printStackTrace();
+		    }
+		
+	}
 }

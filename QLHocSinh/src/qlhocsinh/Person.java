@@ -50,4 +50,8 @@ public abstract class Person {
 	public abstract void showData();
 
 	public abstract void addData();
+	
+	public String toString() {
+		return "id: "+ id + "Name: " + name + "Ngaysinh: " + ngaySinh;
+	}
 }
