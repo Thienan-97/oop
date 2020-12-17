@@ -227,7 +227,7 @@ public class HocSinh extends Person{
 	public void imp() throws IOException {
 		BufferedReader impData = new BufferedReader(new InputStreamReader(new FileInputStream("E:/importData.txt")));
 		StringBuffer sb = new StringBuffer();
-		Person[] str = new HocSinh(id, name, ngaySinh, lop, giaoVienCN, soNgayHoc, diemToan, diemVan, diemAnh, hanhKiem);
+//		Person[] str = new HocSinh(id, name, ngaySinh, lop, giaoVienCN, soNgayHoc, diemToan, diemVan, diemAnh, hanhKiem);
 		try {
 		    String line;
 		    System.out.println(
@@ -242,7 +242,7 @@ public class HocSinh extends Person{
 		    	String[] splitStr = line.split(" ");
 //		    	System.out.println("splitStr0: "+splitStr[0] + " + splitStr1" + splitStr[1]);
 		    	if(splitStr[0] == "id:") {
-		    		str
+		    		
 		    		p[i].id = splitStr[1];
 		    		p[i].setId(splitStr[1]);
 		    		i++;
