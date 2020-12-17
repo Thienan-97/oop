@@ -28,6 +28,7 @@ public class HocSinh extends Person {
 	public String getLop() {
 		return lop;
 	}
+	
 	public void setLop(String lop) {
 		this.lop = lop;
 	}
