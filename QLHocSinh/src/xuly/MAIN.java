@@ -32,7 +32,11 @@ public class MAIN {
 				hs.showData();
 				break;
 			case 3:
-				hs.delData();
+				try {
+					hs.imp();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 				break;
 			case 4:
 				try {
@@ -60,7 +64,7 @@ public class MAIN {
 		System.out.println("Menu:");
 		System.out.println("\t1. Thêm học sinh");
 		System.out.println("\t2. Xuất danh sách xếp loại họcc sinh");
-		System.out.println("\t3. xóa học sinh");
+		System.out.println("\t3. nạp học sinh");
 		System.out.println("\t4. in học sinh");
 //        System.out.println("\t5. TĂ­nh vĂ  xuáº¥t tá»•ng lÆ°Æ¡ng cho toĂ n cĂ´ng ty");
 //        System.out.println("\t6. TĂ¬m NhĂ¢n viĂªn thÆ°á»�ng cĂ³ lÆ°Æ¡ng cao nháº¥t");
