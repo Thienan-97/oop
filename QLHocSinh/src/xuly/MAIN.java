@@ -31,9 +31,9 @@ public class MAIN {
 			case 2:
 				hs.showData();
 				break;
-//			case 3:
-//				truong.showDataGiaoVien();
-//				break;
+			case 3:
+				hs.delData();
+				break;
 			case 4:
 				try {
 					hs.export();
@@ -60,7 +60,7 @@ public class MAIN {
 		System.out.println("Menu:");
 		System.out.println("\t1. Thêm học sinh");
 		System.out.println("\t2. Xuất danh sách xếp loại họcc sinh");
-		System.out.println("\t3. Xuất danh sách giáo viên");
+		System.out.println("\t3. xóa học sinh");
 		System.out.println("\t4. in học sinh");
 //        System.out.println("\t5. TĂ­nh vĂ  xuáº¥t tá»•ng lÆ°Æ¡ng cho toĂ n cĂ´ng ty");
 //        System.out.println("\t6. TĂ¬m NhĂ¢n viĂªn thÆ°á»�ng cĂ³ lÆ°Æ¡ng cao nháº¥t");

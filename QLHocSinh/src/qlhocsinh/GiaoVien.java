@@ -112,5 +112,11 @@ public class GiaoVien extends Person {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void delData() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

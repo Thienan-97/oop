@@ -51,6 +51,8 @@ public abstract class Person {
 
 	public abstract void addData();
 	
+	public abstract void delData();
+	
 	public String toString() {
 		return "id: "+ id + "Name: " + name + "Ngaysinh: " + ngaySinh;
 	}

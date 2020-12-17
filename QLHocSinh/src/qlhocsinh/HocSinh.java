@@ -193,6 +193,7 @@ public class HocSinh extends Person{
 		hs.addData();
 		hs.showData();
 		hs.export();
+		hs.delData();
 	}
 	
 	@Override
@@ -209,7 +210,20 @@ public class HocSinh extends Person{
 		    } catch (IOException e) {
 		      System.out.println("An error occurred.");
 		      e.printStackTrace();
-		    }
+		    }	
+	}
+
+	@Override
+	public void delData() {
+		HocSinh hs = new HocSinh();
+		hs.showData();
+		System.out.println("nhập id hs muốn xóa");
+		String chooseID = sc.nextLine();
 		
+		if (p[i].id == chooseID) {
+			for(int j=i;j<p.length;j++) {
+				p[j] = p[j+1];			
+			}
+		}	
 	}
 }
