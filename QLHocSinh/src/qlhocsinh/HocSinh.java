@@ -227,26 +227,38 @@ public class HocSinh extends Person{
 	public void imp() throws IOException {
 		BufferedReader impData = new BufferedReader(new InputStreamReader(new FileInputStream("E:/importData.txt")));
 		StringBuffer sb = new StringBuffer();
+		Person[] str = new HocSinh(id, name, ngaySinh, lop, giaoVienCN, soNgayHoc, diemToan, diemVan, diemAnh, hanhKiem);
 		try {
 		    String line;
+		    System.out.println(
+					"----------------------------------------------DANH SÁCH HỌC SINH------------------------------------------");
+			System.out.println(String.format(" %10s  ", "Mã số") + String.format("%13s  ", "Họ tên")
+					+ String.format("%13s  ", "Ngày sinh") + String.format("%11s  ", "Lớp")
+					+ String.format("%13s  ", "GVCN") + String.format("%15s  ", "Số ngày học"));
+			System.out.println(
+					"----------------------------------------------------------------------------------------------------------");
 		    while ((line = impData.readLine()) != null) {
-		    	System.out.println(line);
+//		    	System.out.println(line);
 		    	String[] splitStr = line.split(" ");
 //		    	System.out.println("splitStr0: "+splitStr[0] + " + splitStr1" + splitStr[1]);
 		    	if(splitStr[0] == "id:") {
-		    		p[i] = new HocSinh(id, name, ngaySinh, lop, giaoVienCN, soNgayHoc, diemToan, diemVan, diemAnh, hanhKiem);
-//		    		p[i].id = splitStr[1];
-		    		p[i].id=splitStr[1];
+		    		str
+		    		p[i].id = splitStr[1];
+		    		p[i].setId(splitStr[1]);
 		    		i++;
 		    	}	
-//		    	if (p[i] instanceof HocSinh)
-//		    		System.out.println(String.format("day la id: %d", p[i].id));
+		    	if (p[i] instanceof HocSinh) {
+					System.out.println(String.format(" %10s  ", p[i].getId()) + String.format("%13s  ", p[i].getName())
+							+ String.format("%13s  ", p[i].getNgaySinh())
+							+ String.format("%11s  ", ((HocSinh) p[i]).getLop())
+							+ String.format("%13s  ", ((HocSinh) p[i]).getGiaoVienCN())
+							+ String.format("%15s  ", ((HocSinh) p[i]).getSoNgayHoc()));
+		    	}
 		    	sb.append(line);
 		        sb.append("\n");
 		    }
 		} finally {
-		    impData.close();
-		    showData();
+			impData.close();
 		}
 	}	
 }
