@@ -1,5 +1,6 @@
 package qlhocsinh;
 
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -127,6 +128,7 @@ public class HocSinh extends Person{
 	static int i = 0;
 	
 	public static Person p[] = new Person[100];
+	private BufferedWriter writer;
 	
 	@Override
 	public void addData() {
@@ -201,16 +203,22 @@ public class HocSinh extends Person{
 			return "Name: "+ this.name;
 	}
 	
+	@Override
 	public void export() throws IOException {
 		try {
-		      FileWriter student = new FileWriter("E:/student.txt");
-		      student.write(toString());
-		      student.close();
-		      System.out.println("Successfully wrote to the file.");
-		    } catch (IOException e) {
-		      System.out.println("An error occurred.");
-		      e.printStackTrace();
-		    }	
+			writer = new BufferedWriter(new FileWriter("E:/student.txt"));
+			for (int i = 0; i < p.length; i++) {
+				if (p[i] instanceof HocSinh) {
+					writer.write("name: " + p[i].name);
+					writer.newLine();
+				}
+			}
+			writer.close();
+			System.out.println("Successfully wrote to the file.");
+		} catch (IOException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}	
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package qlhocsinh;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class GiaoVien extends Person {
@@ -115,6 +116,12 @@ public class GiaoVien extends Person {
 
 	@Override
 	public void delData() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void export() throws IOException {
 		// TODO Auto-generated method stub
 		
 	}

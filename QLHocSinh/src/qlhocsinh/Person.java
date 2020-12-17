@@ -1,5 +1,7 @@
 package qlhocsinh;
 
+import java.io.IOException;
+
 public abstract class Person {
 	
 //	properties
@@ -50,6 +52,8 @@ public abstract class Person {
 	public abstract void showData();
 
 	public abstract void addData();
+	
+	public abstract void export() throws IOException;
 	
 	public abstract void delData();
 	
