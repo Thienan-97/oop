@@ -67,13 +67,14 @@ public class DsHocSinh implements Helper {
 	@Override
 	public void showData() {
 		System.out.println(
-				"----------------------------------------------DANH SÁCH HỌC SINH-------------------------------------------------------");
+				"----------------------------------------------------------------------------DANH SÁCH HỌC SINH------------------------------------------------------------------------");
 		System.out.println(String.format(" %10s  ", "Mã số") + String.format("%13s  ", "Họ tên")
 				+ String.format("%13s  ", "Lớp") + String.format("%13s  ", "Số Ngày học")
 				+ String.format("%13s  ", "Điểm toán") + String.format("%15s  ", "Điểm Văn")
-				+ String.format("%13s  ", "Điểm anh") + String.format("%13s  ", "Hạnh kiểm"));
+				+ String.format("%13s  ", "Điểm anh") + String.format("%13s  ", "Hạnh kiểm") + String.format("%13s  ", "Xếp loại")
+				+ String.format("%13s  ", "Điểm trung bình") + String.format("%13s  ", "Học phí"));
 		System.out.println(
-				"------------------------------------------------------------------------------------------------------------------------");
+				"----------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 		for (int i = 0; i < hs.length; i++) {
 			hs[i].showData();
 		}
@@ -84,18 +85,17 @@ public class DsHocSinh implements Helper {
 		// TODO Auto-generated method stub
 		System.out.println("Nhập số học sinh cần thêm: ");
 		int k = sc.nextInt();
-		int  j = hs.length;
+		int j = hs.length;
 		int a = hs.length + k;
 		hs = Arrays.copyOf(hs, a);
 
 		for (int i = j; i < a; i++) {
 			hs[i] = new HocSinh();
-			
+
 			sc.nextLine();
 			String id;
-			
-			nhapid:
-			while (true) {
+
+			nhapid: while (true) {
 				System.out.print("Nhập mã học sinh: ");
 				id = sc.nextLine();
 				if (checkId(id)) {
@@ -105,10 +105,10 @@ public class DsHocSinh implements Helper {
 				break nhapid;
 			}
 			hs[i].setId(id);
-		
+
 			System.out.print("Nhập tên học sinh: ");
 			hs[i].setName(sc.nextLine());
-			
+
 			System.out.print("Nhập lớp học sinh: ");
 			hs[i].setLop(sc.nextLine());
 
@@ -134,72 +134,62 @@ public class DsHocSinh implements Helper {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		int temp = 0,count = 0;
-		String numID = "";
-	    boolean flag = false;
-	    System.out.println("Student ID\tStudent Name\tStudent Course\tStudent Year");
-	    for (int i = 0 ; i< hs.length;i++) {
-	        if (hs != null) {
-	        	System.out.println(String.format(" %10s  ", "Mã số") + String.format("%13s  ", "Họ tên")
-	    		+ String.format("%13s  ", "Lớp") + String.format("%13s  ", "Số Ngày học")
-	    		+ String.format("%13s  ", "Điểm toán") + String.format("%15s  ", "Điểm Văn")
-	    		+ String.format("%13s  ", "Điểm anh") + String.format("%13s  ", "Hạnh kiểm"));
-	    System.out.println(
-	    		"------------------------------------------------------------------------------------------------------------------------");
-	    
-	        }
-	    }
-
-	    System.out.println("Enter Student ID to update: ");
-	    numID = sc.nextLine();
-	    sc.nextLine();
-
-	    for(int x = 0; x < count && flag == false; x++){
-	        if (numID.equals(hs[x].getId())){
-	            temp = x;
-	            flag = true;
-	        }
-	    }
-	    if(flag) {
-	        System.out.println("Enter Student Name: ");
-	        hs[temp].setName(sc.nextLine());
-	        System.out.println("Enter Student Course");
-	        hs[temp].setLop(sc.nextLine());
-	        System.out.println("Enter Student Year");
-	        hs[temp].setSoNgayHoc(sc.nextFloat());
-	        System.out.println("The Student ID: " + numID + " record has been updated");
-	    }
-	    else
-	        System.out.println("The Student ID: " +numID+ " is invalid");
+//		// TODO Auto-generated method stub
+//		int temp = 0;
+//		int count = 0;
+//		String numID = "";
+//	    boolean flag = false;
+//	    
+//	   
+//	    
+//	    System.out.println("Enter Student ID to update: ");
+//	    numID = sc.nextLine();
+//
+//	    for(int i = 0; x < count && flag == false; x++){
+//	        if (numID.equalsIgnoreCase(hs[x].getId())){
+//	            temp = x;
+//	            flag = true;
+//	        }
+//	    }
+//	    if(flag) {
+//	        System.out.println("Enter Student Name: ");
+//	        hs[temp].setName(sc.nextLine());
+//	        System.out.println("Enter Student Course");
+//	        hs[temp].setLop(sc.nextLine());
+//	        System.out.println("Enter Student Year");
+//	        hs[temp].setSoNgayHoc(sc.nextFloat());
+//	        System.out.println("The Student ID: " + numID + " record has been updated");
+//	    }
+//	    else
+//	        System.out.println("Không có học sinh nào co số thứ tự:  " );
+//	}
 	}
-
 	@Override
 	public void delete() {
 		sc.nextLine();
-		
+
 		System.out.print("Nhập mã học sinh cần xóa: ");
 		String idDelete = sc.nextLine();
-		
-		if(checkIdXoa(idDelete)) {
+
+		if (checkIdXoa(idDelete)) {
 			int k = 0;
-			//Vòng for tìm mã cần xóa rồi ghi vào k
-			for (int i = 0 ; i< hs.length;i++) {
+			// Vòng for tìm mã cần xóa rồi ghi vào k
+			for (int i = 0; i < hs.length; i++) {
 				if (idDelete.equals(hs[i].getId())) {
-					k=i;
+					k = i;
 					break;
 				}
 			}
-			//Vòng for xóa mã tại vị trí k
-			for (int i = k; i<hs.length-1;i++) {
-				hs[i]=hs[i+1];
+			// Vòng for xóa mã tại vị trí k
+			for (int i = k; i < hs.length - 1; i++) {
+				hs[i] = hs[i + 1];
 			}
-			//Set mảng mới trừ bớt đi 1 giá trị
-			hs = Arrays.copyOf(hs, hs.length-1);
-		}
-		else System.out.println("Mã nhập vào không tồn tại !!");
+			// Set mảng mới trừ bớt đi 1 giá trị
+			hs = Arrays.copyOf(hs, hs.length - 1);
+		} else
+			System.out.println("Mã nhập vào không tồn tại !!");
 	}
-	
+
 	@Override
 	public void search() {
 		String searchName;
@@ -207,26 +197,28 @@ public class DsHocSinh implements Helper {
 		searchName = sc.nextLine();
 		System.out.println("Thông tin học sinh cần tìm: ");
 		System.out.println(String.format(" %10s  ", "Mã số") + String.format("%13s  ", "Họ tên")
-		+ String.format("%13s  ", "Lớp") + String.format("%13s  ", "Số Ngày học")
-		+ String.format("%13s  ", "Điểm toán") + String.format("%15s  ", "Điểm Văn")
-		+ String.format("%13s  ", "Điểm anh") + String.format("%13s  ", "Hạnh kiểm"));
-System.out.println(
-		"------------------------------------------------------------------------------------------------------------------------");
-		for(int i=0 ; i<hs.length;i++) {
-			if(hs[i].getName().toLowerCase().contains(searchName.toLowerCase()) ) 
-				
+				+ String.format("%13s  ", "Lớp") + String.format("%13s  ", "Số Ngày học")
+				+ String.format("%13s  ", "Điểm toán") + String.format("%15s  ", "Điểm Văn")
+				+ String.format("%13s  ", "Điểm anh") + String.format("%13s  ", "Hạnh kiểm"));
+		System.out.println(
+				"------------------------------------------------------------------------------------------------------------------------");
+		for (int i = 0; i < hs.length; i++) {
+			if (hs[i].getName().toLowerCase().contains(searchName.toLowerCase()))
+
 			{
 				hs[i].showData();
 			}
 		}
 
 	}
+
 	public boolean checkIdXoa(String id) {
-		for (int i =0 ; i<hs.length;i++){
-			if(id.equals(hs[i].getId())) {
+		for (int i = 0; i < hs.length; i++) {
+			if (id.equals(hs[i].getId())) {
 				return true;
 			}
-		}return false;
+		}
+		return false;
 	}
 
 	public boolean checkId(String id) {
@@ -237,14 +229,5 @@ System.out.println(
 		return false;
 	}
 
-	public static void main(String[] args) {
-		DsHocSinh list = new DsHocSinh();
-		list.insert();
-		list.add();
-		list.delete();
-		list.update();
-		list.showData();
-		list.search();
-	}
-
+	
 }
