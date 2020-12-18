@@ -1,8 +1,11 @@
 package qlhocsinh;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class HocSinh extends Person{
@@ -195,12 +198,7 @@ public class HocSinh extends Person{
 		hs.addData();
 		hs.showData();
 		hs.export();
-		hs.delData();
-	}
-	
-	@Override
-		public String toString() {
-			return "Name: "+ this.name;
+		hs.imp();
 	}
 	
 	@Override
@@ -209,7 +207,11 @@ public class HocSinh extends Person{
 			writer = new BufferedWriter(new FileWriter("E:/student.txt"));
 			for (int i = 0; i < p.length; i++) {
 				if (p[i] instanceof HocSinh) {
+					writer.write("id: " + p[i].id);
+					writer.newLine();
 					writer.write("name: " + p[i].name);
+					writer.newLine();
+					writer.write("=============================");
 					writer.newLine();
 				}
 			}
@@ -222,16 +224,41 @@ public class HocSinh extends Person{
 	}
 
 	@Override
-	public void delData() {
-		HocSinh hs = new HocSinh();
-		hs.showData();
-		System.out.println("nhập id hs muốn xóa");
-		String chooseID = sc.nextLine();
-		
-		if (p[i].id == chooseID) {
-			for(int j=i;j<p.length;j++) {
-				p[j] = p[j+1];			
-			}
-		}	
-	}
+	public void imp() throws IOException {
+		BufferedReader impData = new BufferedReader(new InputStreamReader(new FileInputStream("E:/importData.txt")));
+		StringBuffer sb = new StringBuffer();
+//		Person[] str = new HocSinh(id, name, ngaySinh, lop, giaoVienCN, soNgayHoc, diemToan, diemVan, diemAnh, hanhKiem);
+		try {
+		    String line;
+		    System.out.println(
+					"----------------------------------------------DANH SÁCH HỌC SINH------------------------------------------");
+			System.out.println(String.format(" %10s  ", "Mã số") + String.format("%13s  ", "Họ tên")
+					+ String.format("%13s  ", "Ngày sinh") + String.format("%11s  ", "Lớp")
+					+ String.format("%13s  ", "GVCN") + String.format("%15s  ", "Số ngày học"));
+			System.out.println(
+					"----------------------------------------------------------------------------------------------------------");
+		    while ((line = impData.readLine()) != null) {
+//		    	System.out.println(line);
+		    	String[] splitStr = line.split(" ");
+//		    	System.out.println("splitStr0: "+splitStr[0] + " + splitStr1" + splitStr[1]);
+		    	if(splitStr[0] == "id:") {
+		    		
+		    		p[i].id = splitStr[1];
+		    		p[i].setId(splitStr[1]);
+		    		i++;
+		    	}	
+		    	if (p[i] instanceof HocSinh) {
+					System.out.println(String.format(" %10s  ", p[i].getId()) + String.format("%13s  ", p[i].getName())
+							+ String.format("%13s  ", p[i].getNgaySinh())
+							+ String.format("%11s  ", ((HocSinh) p[i]).getLop())
+							+ String.format("%13s  ", ((HocSinh) p[i]).getGiaoVienCN())
+							+ String.format("%15s  ", ((HocSinh) p[i]).getSoNgayHoc()));
+		    	}
+		    	sb.append(line);
+		        sb.append("\n");
+		    }
+		} finally {
+			impData.close();
+		}
+	}	
 }
