@@ -68,7 +68,7 @@ public class HocSinh extends Person {
 		// TODO Auto-generated method stub
 		
 		
-				System.out.println(String.format(" %10s  ", super.getId()) + String.format("%13s  ", super.getName())
+				System.out.println(String.format(" %10s  ", super.getId()) + String.format("%17s  ", super.getName())
 						+ String.format("%13s  ", lop)
 						+ String.format("%13s  ", soNgayHoc)
 						+ String.format("%13s  ", diemToan)
