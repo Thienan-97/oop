@@ -33,7 +33,7 @@ public class HocSinh extends Person {
 		this.lop = lop;
 	}
 	
-	public float getSoNgayHoc() {
+	public Object getSoNgayHoc() {
 		return soNgayHoc;
 	}
 	public void setSoNgayHoc(float soNgayHoc) {

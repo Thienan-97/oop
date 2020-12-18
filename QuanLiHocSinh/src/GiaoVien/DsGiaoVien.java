@@ -1,5 +1,8 @@
 package GiaoVien;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 import GiaoVien.GiaoVien;
@@ -176,6 +179,36 @@ public class DsGiaoVien implements Helper {
 				return true;
 		}
 		return false;
+	}
+	
+	public void export() throws IOException {
+
+		try {
+			BufferedWriter writer = new BufferedWriter(
+					new FileWriter("C:\\Users\\DELL XPS 15\\Documents\\export.txt"));
+			writer.write(
+					"---------------------------------------------DANH SÁCH GIÁO VIÊN--------------------------------------------------");
+			writer.newLine();
+			writer.write(String.format(" %10s  ", "Mã số") + String.format("%13s  ", "Họ tên")
+					+ String.format("%13s  ", "Lớp") + String.format("%13s  ", "Số ngày làm")
+					+ String.format("%13s  ", "Lương cơ bản") + String.format("%15s  ", "Tổng lương"));
+			writer.newLine();
+			writer.write(
+					"------------------------------------------------------------------------------------------------------------------");
+			writer.newLine();
+			for (int i = 0; i < gv.length; i++) {
+				writer.write(String.format(" %10s  ", gv[i].getId()) + String.format("%15s  ", gv[i].getName())
+						+ String.format("%11s  ", gv[i].getLop()) + String.format("%13s  ", gv[i].getSoNgayLam())
+						+ String.format("%13s  ", gv[i].getLuongCoBan())
+						+ String.format("%13s  ", gv[i].tinhLuong()));
+				writer.newLine();
+			}
+			writer.close();
+			System.out.println("Successfully wrote to the file.");
+		} catch (IOException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}
 	}
 
 }

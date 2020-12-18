@@ -1,5 +1,6 @@
 package main;
 
+import java.io.IOException;
 import java.util.Scanner;
 import GiaoVien.*;
 import qlhocsinh.*;
@@ -52,6 +53,30 @@ public class MAIN {
 			case 11:
 				gv.showData();
 				break;
+			case 12:
+				try {
+					hs.imp();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case 13:
+				try {
+					hs.export();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case 14:
+				try {
+					gv.export();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
 			case 0:
 				System.out.println("Kết thúc chương trình.");
 				break;
@@ -80,6 +105,9 @@ public class MAIN {
 		System.out.println("\t9. Xóa giáo viên");
 		System.out.println("\t10. Chỉnh sửa thông tin giáo viên");
 		System.out.println("\t11. Xuất danh sách giáo viên");
+		System.out.println("\t12. nhập danh sách");
+		System.out.println("\t13. Export danh sách học sinh");
+		System.out.println("\t14. Export danh sách giáo viên");
 		System.out.println("\t0. Thoát.");
 		System.out.print("Lựa chọn: ");
 		return Integer.parseInt(sc.nextLine());

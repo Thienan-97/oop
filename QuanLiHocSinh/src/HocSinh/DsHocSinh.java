@@ -1,5 +1,11 @@
 package HocSinh;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Arrays;
@@ -68,11 +74,12 @@ public class DsHocSinh implements Helper {
 	public void showData() {
 		System.out.println(
 				"----------------------------------------------------------------------------DANH SÁCH HỌC SINH------------------------------------------------------------------------");
-		System.out.println(String.format(" %10s  ", "Mã số") + String.format("%13s  ", "Họ tên")
-				+ String.format("%13s  ", "Lớp") + String.format("%13s  ", "Số Ngày học")
-				+ String.format("%13s  ", "Điểm toán") + String.format("%15s  ", "Điểm Văn")
-				+ String.format("%13s  ", "Điểm anh") + String.format("%13s  ", "Hạnh kiểm") + String.format("%13s  ", "Xếp loại")
-				+ String.format("%13s  ", "Điểm trung bình") + String.format("%13s  ", "Học phí"));
+		System.out.println(
+				String.format(" %10s  ", "Mã số") + String.format("%13s  ", "Họ tên") + String.format("%13s  ", "Lớp")
+						+ String.format("%13s  ", "Số Ngày học") + String.format("%13s  ", "Điểm toán")
+						+ String.format("%15s  ", "Điểm Văn") + String.format("%13s  ", "Điểm anh")
+						+ String.format("%13s  ", "Hạnh kiểm") + String.format("%13s  ", "Xếp loại")
+						+ String.format("%13s  ", "Điểm trung bình") + String.format("%13s  ", "Học phí"));
 		System.out.println(
 				"----------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 		for (int i = 0; i < hs.length; i++) {
@@ -112,7 +119,7 @@ public class DsHocSinh implements Helper {
 			System.out.print("Nhập lớp học sinh: ");
 			hs[i].setLop(sc.nextLine());
 
-			System.out.print("Nhập số ngày học sinh học: ");
+			System.out.print("Nhập số ngày học: ");
 			hs[i].setSoNgayHoc(sc.nextFloat());
 
 			System.out.print("Nhập điểm toán học sinh: ");
@@ -132,38 +139,43 @@ public class DsHocSinh implements Helper {
 		}
 	}
 
+	static int count = 0;
+
 	@Override
 	public void update() {
-//		// TODO Auto-generated method stub
-//		int temp = 0;
-//		int count = 0;
-//		String numID = "";
-//	    boolean flag = false;
-//	    
-//	   
-//	    
-//	    System.out.println("Enter Student ID to update: ");
-//	    numID = sc.nextLine();
-//
-//	    for(int i = 0; x < count && flag == false; x++){
-//	        if (numID.equalsIgnoreCase(hs[x].getId())){
-//	            temp = x;
-//	            flag = true;
-//	        }
-//	    }
-//	    if(flag) {
-//	        System.out.println("Enter Student Name: ");
-//	        hs[temp].setName(sc.nextLine());
-//	        System.out.println("Enter Student Course");
-//	        hs[temp].setLop(sc.nextLine());
-//	        System.out.println("Enter Student Year");
-//	        hs[temp].setSoNgayHoc(sc.nextFloat());
-//	        System.out.println("The Student ID: " + numID + " record has been updated");
-//	    }
-//	    else
-//	        System.out.println("Không có học sinh nào co số thứ tự:  " );
-//	}
+		int temp = 0;
+		boolean flag = false;
+		String numID ="";
+		System.out.println("Nhập mã học sinh cần cập nhật thông tin: ");
+		numID = sc.nextLine();
+		sc.nextLine();
+
+		for (int x = 0; x < hs.length && flag == false; x++) {
+			if (checkIdUp(numID)) {
+				temp = x;
+				flag = true;
+			}}
+			if (flag) {
+				System.out.println("Enter Student Name: ");
+				hs[temp].setName(sc.nextLine());
+				System.out.println("Enter Student class");
+				hs[temp].setLop(sc.nextLine());
+				System.out.println("Enter Student toan");
+				hs[temp].setDiemToan(sc.nextFloat());
+				System.out.println("Enter Student anh");
+				hs[temp].setDiemAnh(sc.nextFloat());
+				System.out.println("Enter Student van");
+				hs[temp].setDiemVan(sc.nextFloat());
+				System.out.println("Enter Student Course");
+				hs[temp].setHanhKiem(sc.nextInt());
+				System.out.println("Enter Student Course");
+				hs[temp].setSoNgayHoc(sc.nextFloat());
+				System.out.println("Học sinh có mã: " + numID + " đã được cập nhật thông tin");
+			} else
+				System.out.println("Không có học sinh nào có số thứ tự: " + numID);
+			
 	}
+
 	@Override
 	public void delete() {
 		sc.nextLine();
@@ -211,7 +223,14 @@ public class DsHocSinh implements Helper {
 		}
 
 	}
-
+	public boolean checkIdUp(String id) {
+		for (int i = 0; i < hs.length; i++) {
+			if (id.equalsIgnoreCase(hs[i].getId())) {
+				return true;
+			}
+		}
+		return false;
+	}
 	public boolean checkIdXoa(String id) {
 		for (int i = 0; i < hs.length; i++) {
 			if (id.equals(hs[i].getId())) {
@@ -229,5 +248,79 @@ public class DsHocSinh implements Helper {
 		return false;
 	}
 
-	
+//import
+	public void imp() throws IOException {
+		int i = 0;
+		BufferedReader impData = new BufferedReader(
+				new InputStreamReader(new FileInputStream("C:\\Users\\DELL XPS 15\\Documents\\importData.txt")));
+		StringBuffer sb = new StringBuffer();
+		try {
+			String line;
+			System.out.println(
+					"----------------------------------------------DANH SÃ�CH Há»ŒC SINH------------------------------------------");
+			System.out.println(String.format(" %10s  ", "MS") + String.format("%13s  ", "Tên")
+					+ String.format("%13s  ", "Ngay sinh") + String.format("%11s  ", "Lop")
+					+ String.format("%13s  ", "GVCN") + String.format("%15s  ", "hanh kiem"));
+			System.out.println(
+					"----------------------------------------------------------------------------------------------------------");
+			while ((line = impData.readLine()) != null) {
+				System.out.println(line);
+				String[] splitStr = line.split(" ");
+				// id: 1
+//		    	System.out.println("splitStr0: "+splitStr[0] + " + splitStr1" + splitStr[1]);
+				if (splitStr[0] == "id:") {
+
+//		    		hs[i].id = splitStr[1];
+					hs[i].setId(splitStr[1]);
+					i++;
+//		    		System.out.println(String.format(" %10s  ", hs[i].getId()) + String.format("%13s  ", hs[i].getName()));
+////					+ String.format("%13s  ", hs[i].getLop()) + String.format("%13s  ", hs[i].getSoNgayHoc())
+////					+ String.format("%13s  ", hs[i].getDiemToan()) + String.format("%13s  ", hs[i].getDiemAnh())
+////					+ String.format("%13s  ", hs[i].getDiemVan()) + String.format("%13s  ", hs[i].getHanhKiem()));
+				}
+
+				sb.append(line);
+				sb.append("\n");
+			}
+		} finally {
+
+			impData.close();
+		}
+	}
+
+	public void export() throws IOException {
+
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\DELL XPS 15\\Documents\\export.txt"));
+			writer.write(
+					"----------------------------------------------------------------------------DANH SÁCH HỌC SINH------------------------------------------------------------------------");
+			writer.newLine();
+			writer.write(String.format(" %10s  ", "Mã số") + String.format("%13s  ", "Họ tên")
+					+ String.format("%13s  ", "Lớp") + String.format("%13s  ", "Số Ngày học")
+					+ String.format("%13s  ", "Điểm toán") + String.format("%15s  ", "Điểm Văn")
+					+ String.format("%13s  ", "Điểm anh") + String.format("%13s  ", "Hạnh kiểm")
+					+ String.format("%13s  ", "Xếp loại") + String.format("%13s  ", "Điểm trung bình")
+					+ String.format("%13s  ", "Học phí"));
+			writer.newLine();
+			writer.write(
+					"----------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+			writer.newLine();
+			for (int i = 0; i < hs.length; i++) {
+				writer.write(String.format(" %10s  ", hs[i].getId()) + String.format("%15s  ", hs[i].getName())
+						+ String.format("%11s  ", hs[i].getLop()) + String.format("%13s  ", hs[i].getSoNgayHoc())
+						+ String.format("%13s  ", hs[i].getDiemToan()) + String.format("%15s  ", hs[i].getDiemVan())
+						+ String.format("%13s  ", hs[i].getDiemAnh()) + String.format("%13s  ", hs[i].getHanhKiem())
+						+ String.format("%13s  ", hs[i].xepLoaiHocSinh())
+						+ String.format("%15s  ", hs[i].tinhDiemTrungBinh())
+						+ String.format("%13s  ", hs[i].tinhHocPhi()));
+				writer.newLine();
+			}
+			writer.close();
+			System.out.println("Successfully wrote to the file.");
+		} catch (IOException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+		}
+	}
+
 }

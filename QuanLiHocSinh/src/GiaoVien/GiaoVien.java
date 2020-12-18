@@ -80,4 +80,7 @@ public class GiaoVien extends Person{
 		list.add();
 		list.showData();
 	}
+
+
+
 }
