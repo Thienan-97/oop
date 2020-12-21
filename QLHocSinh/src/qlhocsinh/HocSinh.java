@@ -130,7 +130,7 @@ public class HocSinh extends Person{
 	static Scanner sc = new Scanner(System.in);
 	static int i = 0;
 	
-	public static Person p[] = new Person[100];
+	public Person p[] = new Person[100];
 	private BufferedWriter writer;
 	
 	@Override
@@ -227,7 +227,7 @@ public class HocSinh extends Person{
 	public void imp() throws IOException {
 		BufferedReader impData = new BufferedReader(new InputStreamReader(new FileInputStream("E:/importData.txt")));
 		StringBuffer sb = new StringBuffer();
-//		Person[] str = new HocSinh(id, name, ngaySinh, lop, giaoVienCN, soNgayHoc, diemToan, diemVan, diemAnh, hanhKiem);
+		String[] splitStr = new String[10];
 		try {
 		    String line;
 		    System.out.println(
@@ -239,20 +239,14 @@ public class HocSinh extends Person{
 					"----------------------------------------------------------------------------------------------------------");
 		    while ((line = impData.readLine()) != null) {
 //		    	System.out.println(line);
-		    	String[] splitStr = line.split(" ");
-//		    	System.out.println("splitStr0: "+splitStr[0] + " + splitStr1" + splitStr[1]);
+		    	splitStr = line.split(" ");
+		    	System.out.println("day: "+ splitStr[1]);
 		    	if(splitStr[0] == "id:") {
-		    		
-		    		p[i].id = splitStr[1];
-		    		p[i].setId(splitStr[1]);
+		    		p[i].id = String.format("%10", splitStr[1]);
+		    		p[i].setId(String.format("%10", splitStr[1]));
+		    		System.out.println("day la  "+ p[i].getId());
+		    		System.out.println("day la  "+ p[i].id);
 		    		i++;
-		    	}	
-		    	if (p[i] instanceof HocSinh) {
-					System.out.println(String.format(" %10s  ", p[i].getId()) + String.format("%13s  ", p[i].getName())
-							+ String.format("%13s  ", p[i].getNgaySinh())
-							+ String.format("%11s  ", ((HocSinh) p[i]).getLop())
-							+ String.format("%13s  ", ((HocSinh) p[i]).getGiaoVienCN())
-							+ String.format("%15s  ", ((HocSinh) p[i]).getSoNgayHoc()));
 		    	}
 		    	sb.append(line);
 		        sb.append("\n");
