@@ -18,7 +18,7 @@ public class DsHocSinh implements Helper {
 
 	private HocSinh[] hs;
 	private int n;
-	static Scanner sc = new Scanner(System.in);
+	Scanner sc = new Scanner(System.in);
 
 	public DsHocSinh(HocSinh[] hs, int n) {
 		this.hs = hs;
@@ -143,36 +143,35 @@ public class DsHocSinh implements Helper {
 
 	@Override
 	public void update() {
+		sc = new Scanner(System.in);
 		int temp = 0;
 		boolean flag = false;
-		String numID ="";
-		System.out.println("Nhập mã học sinh cần cập nhật thông tin: ");
-		numID = sc.nextLine();
-		sc.nextLine();
-
+		System.out.print("Nhập mã học sinh cần cập nhật thông tin: ");
+		String numID = sc.nextLine();
 		for (int x = 0; x < hs.length && flag == false; x++) {
 			if (checkIdUp(numID)) {
 				temp = x;
 				flag = true;
-			}}
-			if (flag) {
-				System.out.println("Enter Student Name: ");
-				hs[temp].setName(sc.nextLine());
-				System.out.println("Enter Student class");
-				hs[temp].setLop(sc.nextLine());
-				System.out.println("Enter Student toan");
-				hs[temp].setDiemToan(sc.nextFloat());
-				System.out.println("Enter Student anh");
-				hs[temp].setDiemAnh(sc.nextFloat());
-				System.out.println("Enter Student van");
-				hs[temp].setDiemVan(sc.nextFloat());
-				System.out.println("Enter Student Course");
-				hs[temp].setHanhKiem(sc.nextInt());
-				System.out.println("Enter Student Course");
-				hs[temp].setSoNgayHoc(sc.nextFloat());
-				System.out.println("Học sinh có mã: " + numID + " đã được cập nhật thông tin");
-			} else
-				System.out.println("Không có học sinh nào có số thứ tự: " + numID);
+			}
+		}
+		if (flag) {
+			System.out.println("Enter Student Name: ");
+			hs[temp].setName(sc.nextLine());
+			System.out.println("Enter Student class");
+			hs[temp].setLop(sc.nextLine());
+			System.out.println("Enter Student toan");
+			hs[temp].setDiemToan(sc.nextFloat());
+			System.out.println("Enter Student anh");
+			hs[temp].setDiemAnh(sc.nextFloat());
+			System.out.println("Enter Student van");
+			hs[temp].setDiemVan(sc.nextFloat());
+			System.out.println("Enter Student Course");
+			hs[temp].setHanhKiem(sc.nextInt());
+			System.out.println("Enter Student Course");
+			hs[temp].setSoNgayHoc(sc.nextFloat());
+			System.out.println("Học sinh có mã: " + numID + " đã được cập nhật thông tin");
+		} else
+			System.out.println("Không có học sinh nào có số thứ tự: " + numID);
 			
 	}
 
@@ -250,26 +249,24 @@ public class DsHocSinh implements Helper {
 
 //import
 	public void imp() throws IOException {
-		int i = 0;
-		BufferedReader impData = new BufferedReader(
-				new InputStreamReader(new FileInputStream("C:\\Users\\DELL XPS 15\\Documents\\importData.txt")));
+		BufferedReader impData = new BufferedReader(new InputStreamReader(new FileInputStream("E:/importData.txt")));
 		StringBuffer sb = new StringBuffer();
+		String[] splitStr = new String[10];
+		int i = 0;
 		try {
-			String line;
-			System.out.println(
-					"----------------------------------------------DANH SÃ�CH Há»ŒC SINH------------------------------------------");
-			System.out.println(String.format(" %10s  ", "MS") + String.format("%13s  ", "Tên")
-					+ String.format("%13s  ", "Ngay sinh") + String.format("%11s  ", "Lop")
-					+ String.format("%13s  ", "GVCN") + String.format("%15s  ", "hanh kiem"));
+		    String line;
+		    System.out.println(
+					"----------------------------------------------DANH SÁCH HỌC SINH------------------------------------------");
+			System.out.println(String.format(" %10s  ", "Mã số") + String.format("%13s  ", "Họ tên")
+					+ String.format("%13s  ", "Ngày sinh") + String.format("%11s  ", "Lớp")
+					+ String.format("%13s  ", "GVCN") + String.format("%15s  ", "Số ngày học"));
 			System.out.println(
 					"----------------------------------------------------------------------------------------------------------");
-			while ((line = impData.readLine()) != null) {
-				System.out.println(line);
-				String[] splitStr = line.split(" ");
-				// id: 1
-//		    	System.out.println("splitStr0: "+splitStr[0] + " + splitStr1" + splitStr[1]);
+		    while ((line = impData.readLine()) != null) {
+//		    	System.out.println(line);
+		    	splitStr = line.split(" ");
+		    	System.out.println("day: "+ splitStr[1]);
 				if (splitStr[0] == "id:") {
-
 //		    		hs[i].id = splitStr[1];
 					hs[i].setId(splitStr[1]);
 					i++;

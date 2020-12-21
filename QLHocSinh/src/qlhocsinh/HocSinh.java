@@ -20,7 +20,8 @@ public class HocSinh extends Person{
 		
 	public HocSinh(String id, String name, String ngaySinh, int lop, String giaoVienCN, float soNgayHoc, float diemToan,
 			float diemVan, float diemAnh, int hanhKiem) {
-		super(id, name, ngaySinh);
+		super(name, ngaySinh, id);
+		this.id = id;
 		this.lop = lop;
 		this.giaoVienCN = giaoVienCN;
 		this.soNgayHoc = soNgayHoc;
@@ -227,6 +228,7 @@ public class HocSinh extends Person{
 	public void imp() throws IOException {
 		BufferedReader impData = new BufferedReader(new InputStreamReader(new FileInputStream("E:/importData.txt")));
 		StringBuffer sb = new StringBuffer();
+		HocSinh p[]  =new HocSinh[100];
 		String[] splitStr = new String[10];
 		try {
 		    String line;
@@ -241,13 +243,13 @@ public class HocSinh extends Person{
 //		    	System.out.println(line);
 		    	splitStr = line.split(" ");
 		    	System.out.println("day: "+ splitStr[1]);
-		    	if(splitStr[0] == "id:") {
-		    		p[i].id = String.format("%10", splitStr[1]);
-		    		p[i].setId(String.format("%10", splitStr[1]));
+//		    	if((String)splitStr[0] == "id:") {
+		    		p[i].id = splitStr[1];
+		    		p[i].setId(splitStr[1]);
 		    		System.out.println("day la  "+ p[i].getId());
 		    		System.out.println("day la  "+ p[i].id);
 		    		i++;
-		    	}
+//		    	}
 		    	sb.append(line);
 		        sb.append("\n");
 		    }
