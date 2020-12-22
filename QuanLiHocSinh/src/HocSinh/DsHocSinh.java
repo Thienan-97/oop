@@ -184,7 +184,7 @@ public class DsHocSinh implements Helper {
 
 	@Override
 	public void delete() {
-		sc = new Scanner(System.in);
+		sc.nextLine();
 
 		System.out.print("Nhập mã học sinh cần xóa: ");
 		String idDelete = sc.nextLine();
@@ -211,7 +211,6 @@ public class DsHocSinh implements Helper {
 	@Override
 	public void search() {
 		String searchName;
-		sc = new  Scanner(System.in);
 		System.out.print("Nhập tên cần tìm: ");
 		searchName = sc.nextLine();
 		System.out.println("Thông tin học sinh cần tìm: ");
@@ -256,10 +255,10 @@ public class DsHocSinh implements Helper {
 	}
 
 //import
-	public void impData() throws IOException {
+	public void imp() throws IOException {
 		BufferedReader impData = new BufferedReader(new InputStreamReader(new FileInputStream("E:/importData.txt")));
 		StringBuffer sb = new StringBuffer();
-		String[] splitStr = new String[3];
+		String[] splitStr = new String[10];
 		int i = 0;
 		try {
 		    String line;
@@ -293,7 +292,7 @@ public class DsHocSinh implements Helper {
 		}
 	}
 
-	public void expData() throws IOException {
+	public void export() throws IOException {
 
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\DELL XPS 15\\Documents\\export.txt"));

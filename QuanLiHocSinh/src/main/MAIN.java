@@ -55,7 +55,7 @@ public class MAIN {
 				break;
 			case 12:
 				try {
-					hs.impData();
+					hs.imp();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -63,7 +63,7 @@ public class MAIN {
 				break;
 			case 13:
 				try {
-					hs.expData();
+					hs.export();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
