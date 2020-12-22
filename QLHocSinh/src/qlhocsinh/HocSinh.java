@@ -224,6 +224,7 @@ public class HocSinh extends Person{
 
 	@Override
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public void imp() throws IOException {
 		BufferedReader impData = new BufferedReader(new InputStreamReader(new FileInputStream("E:/importData.txt")));
 		StringBuffer sb = new StringBuffer();
@@ -257,6 +258,8 @@ public class HocSinh extends Person{
 		}
 	}	
 =======
+=======
+>>>>>>> parent of b4eac25... Merge branch 'main' of https://github.com/Thienan-97/oop into main
 	public void delData() {
 		HocSinh hs = new HocSinh();
 		hs.showData();
@@ -269,5 +272,8 @@ public class HocSinh extends Person{
 			}
 		}	
 	}
+<<<<<<< HEAD
+>>>>>>> parent of b4eac25... Merge branch 'main' of https://github.com/Thienan-97/oop into main
+=======
 >>>>>>> parent of b4eac25... Merge branch 'main' of https://github.com/Thienan-97/oop into main
 }

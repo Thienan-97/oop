@@ -1,6 +1,7 @@
 package qlhocsinh;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -10,6 +11,8 @@ import java.io.InputStreamReader;
 
 import HocSinh.HocSinh;
 
+=======
+>>>>>>> parent of b4eac25... Merge branch 'main' of https://github.com/Thienan-97/oop into main
 =======
 >>>>>>> parent of b4eac25... Merge branch 'main' of https://github.com/Thienan-97/oop into main
 public abstract class Person {
@@ -41,8 +44,11 @@ public abstract class Person {
 	public abstract void showData();
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 	
+=======
+>>>>>>> parent of b4eac25... Merge branch 'main' of https://github.com/Thienan-97/oop into main
 =======
 >>>>>>> parent of b4eac25... Merge branch 'main' of https://github.com/Thienan-97/oop into main
 }
