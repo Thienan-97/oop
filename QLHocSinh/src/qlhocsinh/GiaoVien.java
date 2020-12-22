@@ -115,13 +115,13 @@ public class GiaoVien extends Person {
 	}
 
 	@Override
-	public void export() throws IOException {
+	public void delData() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void imp() {
+	public void export() throws IOException {
 		// TODO Auto-generated method stub
 		
 	}

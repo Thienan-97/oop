@@ -67,8 +67,7 @@ public class DsGiaoVien implements Helper {
 			sc.nextLine();
 			String id;
 
-			nhapid:
-			while (true) {
+			nhapid: while (true) {
 				System.out.print("Nhập mã giáo viên: ");
 				id = sc.nextLine();
 				if (checkId(id)) {

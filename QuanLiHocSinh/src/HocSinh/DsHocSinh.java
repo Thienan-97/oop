@@ -155,20 +155,27 @@ public class DsHocSinh implements Helper {
 			}
 		}
 		if (flag) {
-			System.out.println("Enter Student Name: ");
+
+			System.out.print("Nhập tên học sinh: ");
 			hs[temp].setName(sc.nextLine());
-			System.out.println("Enter Student class");
+
+			System.out.print("Nhập lớp học sinh: ");
 			hs[temp].setLop(sc.nextLine());
-			System.out.println("Enter Student toan");
-			hs[temp].setDiemToan(sc.nextFloat());
-			System.out.println("Enter Student anh");
-			hs[temp].setDiemAnh(sc.nextFloat());
-			System.out.println("Enter Student van");
-			hs[temp].setDiemVan(sc.nextFloat());
-			System.out.println("Enter Student Course");
-			hs[temp].setHanhKiem(sc.nextInt());
-			System.out.println("Enter Student Course");
+
+			System.out.print("Nhập số ngày học: ");
 			hs[temp].setSoNgayHoc(sc.nextFloat());
+
+			System.out.print("Nhập điểm toán học sinh: ");
+			hs[temp].setDiemToan(sc.nextFloat());
+
+			System.out.print("Nhập điểm văn học sinh: ");
+			hs[temp].setDiemVan(sc.nextFloat());
+
+			System.out.print("Nhập điểm anh học sinh: ");
+			hs[temp].setDiemAnh(sc.nextFloat());
+
+			System.out.print("Nhập hạnh kiểm của học sinh: ");
+			hs[temp].setHanhKiem(sc.nextInt());
 			System.out.println("Học sinh có mã: " + numID + " đã được cập nhật thông tin");
 		} else
 			System.out.println("Không có học sinh nào có số thứ tự: " + numID);

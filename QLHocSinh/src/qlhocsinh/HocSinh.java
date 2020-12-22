@@ -1,11 +1,8 @@
 package qlhocsinh;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class HocSinh extends Person{
@@ -199,7 +196,12 @@ public class HocSinh extends Person{
 		hs.addData();
 		hs.showData();
 		hs.export();
-		hs.imp();
+		hs.delData();
+	}
+	
+	@Override
+		public String toString() {
+			return "Name: "+ this.name;
 	}
 	
 	@Override
@@ -208,11 +210,7 @@ public class HocSinh extends Person{
 			writer = new BufferedWriter(new FileWriter("E:/student.txt"));
 			for (int i = 0; i < p.length; i++) {
 				if (p[i] instanceof HocSinh) {
-					writer.write("id: " + p[i].id);
-					writer.newLine();
 					writer.write("name: " + p[i].name);
-					writer.newLine();
-					writer.write("=============================");
 					writer.newLine();
 				}
 			}
@@ -225,6 +223,7 @@ public class HocSinh extends Person{
 	}
 
 	@Override
+<<<<<<< HEAD
 	public void imp() throws IOException {
 		BufferedReader impData = new BufferedReader(new InputStreamReader(new FileInputStream("E:/importData.txt")));
 		StringBuffer sb = new StringBuffer();
@@ -257,4 +256,18 @@ public class HocSinh extends Person{
 			impData.close();
 		}
 	}	
+=======
+	public void delData() {
+		HocSinh hs = new HocSinh();
+		hs.showData();
+		System.out.println("nhập id hs muốn xóa");
+		String chooseID = sc.nextLine();
+		
+		if (p[i].id == chooseID) {
+			for(int j=i;j<p.length;j++) {
+				p[j] = p[j+1];			
+			}
+		}	
+	}
+>>>>>>> parent of b4eac25... Merge branch 'main' of https://github.com/Thienan-97/oop into main
 }

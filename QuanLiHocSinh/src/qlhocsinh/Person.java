@@ -1,5 +1,6 @@
 package qlhocsinh;
 
+<<<<<<< HEAD
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -9,11 +10,11 @@ import java.io.InputStreamReader;
 
 import HocSinh.HocSinh;
 
+=======
+>>>>>>> parent of b4eac25... Merge branch 'main' of https://github.com/Thienan-97/oop into main
 public abstract class Person {
 	protected String id;
 	protected String name;
-	protected Person []p = new Person[50];
-	int i=0;
 	//Constructor
 	public Person(String id, String name) {
 		this.id = id;
@@ -39,6 +40,9 @@ public abstract class Person {
 	}
 	public abstract void showData();
 	
+<<<<<<< HEAD
 	
 	
+=======
+>>>>>>> parent of b4eac25... Merge branch 'main' of https://github.com/Thienan-97/oop into main
 }
